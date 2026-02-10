@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.DropMode;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -19,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -481,6 +483,15 @@ public class ObtainPanel {
         
         
         extractionTable.setComponentPopupMenu(extPopupMenu);
+        extractionTable.setDragEnabled(true);
+        extractionTable.setDropMode(DropMode.INSERT_ROWS);
+        extractionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        extractionTable.setTransferHandler(new TableRowDnDTransferHandler(new RowMoveHandler() {
+			@Override
+			public void moveRow(int fromIndex, int toIndex) {
+				moveExtractionEntry(fromIndex, toIndex);
+			}
+		}));
 
         extractionTable.setModel(extractionTableModel);
         this.callbacks.customizeUiComponent(extractionTable);
@@ -596,6 +607,64 @@ public class ObtainPanel {
 	}
 	
 	
+	private void syncObtainEntryOrders() {
+		for (ObtainEntry obtainEntry : ObtainPanel.obtainEntrylist) {
+			obtainEntry.extractionlistNames.clear();
+			for (ExtractionEntry extractionEntry : ObtainPanel.extractionEntrylist) {
+				if (obtainEntry.getMsgID().equals(extractionEntry.getextractionmsgID())) {
+					obtainEntry.extractionlistNames.add(extractionEntry);
+				}
+			}
+
+			obtainEntry.replacementlistNames.clear();
+			for (ReplacementEntry replacementEntry : ObtainPanel.replacementEntrylist) {
+				if (obtainEntry.getMsgID().equals(replacementEntry.getreplacementMsgID())) {
+					obtainEntry.replacementlistNames.add(replacementEntry);
+				}
+			}
+		}
+	}
+
+	private void moveExtractionEntry(int from, int to) {
+		if (from < 0 || from >= extractionEntrylist.size()) {
+			return;
+		}
+		if (to < 0) {
+			to = 0;
+		}
+		if (to >= extractionEntrylist.size()) {
+			to = extractionEntrylist.size() - 1;
+		}
+		if (from == to) {
+			return;
+		}
+
+		ExtractionEntry movedEntry = extractionEntrylist.remove(from);
+		extractionEntrylist.add(to, movedEntry);
+		syncObtainEntryOrders();
+		extractionTableModel.fireTableDataChanged();
+	}
+
+	private void moveReplacementEntry(int from, int to) {
+		if (from < 0 || from >= replacementEntrylist.size()) {
+			return;
+		}
+		if (to < 0) {
+			to = 0;
+		}
+		if (to >= replacementEntrylist.size()) {
+			to = replacementEntrylist.size() - 1;
+		}
+		if (from == to) {
+			return;
+		}
+
+		ReplacementEntry movedEntry = replacementEntrylist.remove(from);
+		replacementEntrylist.add(to, movedEntry);
+		syncObtainEntryOrders();
+		replacementTableModel.fireTableDataChanged();
+	}
+
 	public JScrollPane generateReplacementTablePanel() {
 		JPopupMenu extPopupMenu = new JPopupMenu();
 		extPopupMenu.add("Delete").addActionListener(new ActionListener() {
@@ -637,6 +706,15 @@ public class ObtainPanel {
         
         
         replacementTable.setComponentPopupMenu(extPopupMenu);
+        replacementTable.setDragEnabled(true);
+        replacementTable.setDropMode(DropMode.INSERT_ROWS);
+        replacementTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        replacementTable.setTransferHandler(new TableRowDnDTransferHandler(new RowMoveHandler() {
+			@Override
+			public void moveRow(int fromIndex, int toIndex) {
+				moveReplacementEntry(fromIndex, toIndex);
+			}
+		}));
 
         replacementTable.setModel(replacementTableModel);
         this.callbacks.customizeUiComponent(replacementTable);
