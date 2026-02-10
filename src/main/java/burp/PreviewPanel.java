@@ -101,15 +101,16 @@ public class PreviewPanel {
 		JPanel secondPanel = new JPanel();
 		secondPanel.setLayout(new BorderLayout());
 		JSplitPane originalResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		originalResizePane.setResizeWeight(.9d);
-		originalResizePane.setDividerLocation(560);
+		originalResizePane.setResizeWeight(1.0d);
 		JPanel originalReqResPanel = new JPanel(new BorderLayout());
 		originalReqResPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
 		originalReqResPanel.setMinimumSize(new Dimension(700, 260));
 		JPanel originalResizeBuffer = new JPanel(new BorderLayout());
-		originalResizeBuffer.setMinimumSize(new Dimension(700, 80));
+		originalResizeBuffer.setPreferredSize(new Dimension(1, 1));
+		originalResizeBuffer.setMinimumSize(new Dimension(1, 1));
 		originalResizePane.setTopComponent(originalReqResPanel);
 		originalResizePane.setBottomComponent(originalResizeBuffer);
+		originalResizePane.setDividerLocation(0.98d);
 		callbacks.customizeUiComponent(originalResizePane);
 		secondPanel.add(originalResizePane, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(secondPanel);
@@ -163,7 +164,7 @@ public class PreviewPanel {
 
 		JSplitPane executedMacroSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		executedMacroSplitPane.setResizeWeight(.25d);
-		executedMacroSplitPane.setDividerLocation(220);
+		executedMacroSplitPane.setDividerLocation(0.2d);
 		executedMacroSplitPane.setTopComponent(atorMacroTablePanel);
 		executedMacroSplitPane.setBottomComponent(thirdPanelreqres);
 		callbacks.customizeUiComponent(executedMacroSplitPane);
@@ -196,15 +197,16 @@ public class PreviewPanel {
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
 		JSplitPane modifiedResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		modifiedResizePane.setResizeWeight(.9d);
-		modifiedResizePane.setDividerLocation(560);
+		modifiedResizePane.setResizeWeight(1.0d);
 		JPanel modifiedReqResPanel = new JPanel(new BorderLayout());
 		modifiedReqResPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
 		modifiedReqResPanel.setMinimumSize(new Dimension(700, 260));
 		JPanel modifiedResizeBuffer = new JPanel(new BorderLayout());
-		modifiedResizeBuffer.setMinimumSize(new Dimension(700, 80));
+		modifiedResizeBuffer.setPreferredSize(new Dimension(1, 1));
+		modifiedResizeBuffer.setMinimumSize(new Dimension(1, 1));
 		modifiedResizePane.setTopComponent(modifiedReqResPanel);
 		modifiedResizePane.setBottomComponent(modifiedResizeBuffer);
+		modifiedResizePane.setDividerLocation(0.98d);
 		callbacks.customizeUiComponent(modifiedResizePane);
 		fourthPanel.add(modifiedResizePane, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(fourthPanel);

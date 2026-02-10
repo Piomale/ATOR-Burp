@@ -336,8 +336,21 @@ public class ObtainPanel {
 	public JPanel preparethirdPanel() {
 		JPanel thirdPanel = new JPanel();
 		thirdPanel.setLayout(new BorderLayout());
-		
-		thirdPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
+
+		JSplitPane requestResponseResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		requestResponseResizePane.setResizeWeight(1.0d);
+		JPanel requestResponsePanel = new JPanel(new BorderLayout());
+		requestResponsePanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
+		requestResponsePanel.setMinimumSize(new Dimension(700, 260));
+		JPanel resizeHandlePanel = new JPanel(new BorderLayout());
+		resizeHandlePanel.setPreferredSize(new Dimension(1, 1));
+		resizeHandlePanel.setMinimumSize(new Dimension(1, 1));
+		requestResponseResizePane.setTopComponent(requestResponsePanel);
+		requestResponseResizePane.setBottomComponent(resizeHandlePanel);
+		requestResponseResizePane.setDividerLocation(0.98d);
+		callbacks.customizeUiComponent(requestResponseResizePane);
+
+		thirdPanel.add(requestResponseResizePane, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(thirdPanel);
 		
     	return thirdPanel;
