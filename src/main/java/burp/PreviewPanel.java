@@ -100,7 +100,18 @@ public class PreviewPanel {
 		
 		JPanel secondPanel = new JPanel();
 		secondPanel.setLayout(new BorderLayout());
-		secondPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
+		JSplitPane originalResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		originalResizePane.setResizeWeight(.9d);
+		originalResizePane.setDividerLocation(560);
+		JPanel originalReqResPanel = new JPanel(new BorderLayout());
+		originalReqResPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
+		originalReqResPanel.setMinimumSize(new Dimension(700, 260));
+		JPanel originalResizeBuffer = new JPanel(new BorderLayout());
+		originalResizeBuffer.setMinimumSize(new Dimension(700, 80));
+		originalResizePane.setTopComponent(originalReqResPanel);
+		originalResizePane.setBottomComponent(originalResizeBuffer);
+		callbacks.customizeUiComponent(originalResizePane);
+		secondPanel.add(originalResizePane, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(secondPanel);
 		previewPanel.add(secondPanel);
     	
@@ -152,7 +163,7 @@ public class PreviewPanel {
 
 		JSplitPane executedMacroSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		executedMacroSplitPane.setResizeWeight(.25d);
-		executedMacroSplitPane.setDividerLocation(140);
+		executedMacroSplitPane.setDividerLocation(220);
 		executedMacroSplitPane.setTopComponent(atorMacroTablePanel);
 		executedMacroSplitPane.setBottomComponent(thirdPanelreqres);
 		callbacks.customizeUiComponent(executedMacroSplitPane);
@@ -184,7 +195,18 @@ public class PreviewPanel {
 		
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
-		fourthPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
+		JSplitPane modifiedResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		modifiedResizePane.setResizeWeight(.9d);
+		modifiedResizePane.setDividerLocation(560);
+		JPanel modifiedReqResPanel = new JPanel(new BorderLayout());
+		modifiedReqResPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
+		modifiedReqResPanel.setMinimumSize(new Dimension(700, 260));
+		JPanel modifiedResizeBuffer = new JPanel(new BorderLayout());
+		modifiedResizeBuffer.setMinimumSize(new Dimension(700, 80));
+		modifiedResizePane.setTopComponent(modifiedReqResPanel);
+		modifiedResizePane.setBottomComponent(modifiedResizeBuffer);
+		callbacks.customizeUiComponent(modifiedResizePane);
+		fourthPanel.add(modifiedResizePane, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(fourthPanel);
 		
 		previewPanel.add(fourthPanel);
@@ -344,7 +366,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1500, 420));
+		previewViewPane.setPreferredSize(new Dimension(1500, 760));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);
@@ -393,7 +415,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponseATORPanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1700, 420));
+		previewViewPane.setPreferredSize(new Dimension(1700, 760));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);
@@ -442,7 +464,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponseModifiedPanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1500, 420));
+		previewViewPane.setPreferredSize(new Dimension(1500, 760));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);

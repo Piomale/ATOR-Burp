@@ -164,7 +164,7 @@ public class ObtainPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse obtainRequestResponse = new ErrorRequestResponse();
 		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		obtainViewPane.setPreferredSize(new Dimension(1500, 420));
+		obtainViewPane.setPreferredSize(new Dimension(1500, 760));
 		obtainViewPane.setResizeWeight(.5d);
 		obtainViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(obtainViewPane);
@@ -269,9 +269,7 @@ public class ObtainPanel {
         leftPanel.add(leftrightPanel);
         
         Dimension minimumSize = new Dimension(200, 50);
-        Dimension maximumSize = new Dimension(600, 50);
         leftPanel.setMinimumSize(minimumSize);
-        leftPanel.setMaximumSize(maximumSize);
 		obtainextRepViewPane.setLeftComponent(leftPanel);
 		
 		// right panel - start
@@ -329,7 +327,6 @@ public class ObtainPanel {
 		
 		// Right panel
 		rightPanel.setMinimumSize(minimumSize);
-		rightPanel.setMaximumSize(maximumSize);
 		obtainextRepViewPane.setRightComponent(rightPanel);
 		
 		callbacks.customizeUiComponent(obtainextRepViewPane);
