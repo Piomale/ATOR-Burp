@@ -198,8 +198,10 @@ public class PreviewPanel {
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
 		Component modifiedRequestResponsePanel = prepareRequestResponseModifiedPanel();
+		Component modifiedResizePane = modifiedRequestResponsePanel;
 		fourthPanel.add(modifiedRequestResponsePanel, BorderLayout.CENTER);
 		fourthPanel.setMinimumSize(new Dimension(700, 120));
+		callbacks.customizeUiComponent(modifiedResizePane);
 		callbacks.customizeUiComponent(fourthPanel);
 		callbacks.customizeUiComponent(modifiedResizePane);
 		
