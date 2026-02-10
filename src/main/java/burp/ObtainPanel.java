@@ -124,8 +124,18 @@ public class ObtainPanel {
 		borderLayouttable.add(tablePaneldown, BorderLayout.PAGE_START);
 		
 		obtainPanel.add(borderLayouttable);
-		obtainPanel.add(preparethirdPanel());
-		obtainPanel.add(preparefourthPanel());
+
+		JSplitPane obtainRequestAndExtractionSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		obtainRequestAndExtractionSplitPane.setResizeWeight(.6d);
+		obtainRequestAndExtractionSplitPane.setDividerLocation(380);
+		JPanel requestResponsePanel = preparethirdPanel();
+		requestResponsePanel.setMinimumSize(new Dimension(700, 260));
+		JPanel extractionReplacementPanel = preparefourthPanel();
+		extractionReplacementPanel.setMinimumSize(new Dimension(700, 220));
+		obtainRequestAndExtractionSplitPane.setTopComponent(requestResponsePanel);
+		obtainRequestAndExtractionSplitPane.setBottomComponent(extractionReplacementPanel);
+		callbacks.customizeUiComponent(obtainRequestAndExtractionSplitPane);
+		obtainPanel.add(obtainRequestAndExtractionSplitPane);
 		
 		JPanel borderLayoutsepfourth  = new JPanel();
 		borderLayoutsepfourth.setLayout(new BorderLayout());
@@ -350,7 +360,7 @@ public class ObtainPanel {
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
 		
-		fourthPanel.add(prepareExtractionReplacementPanel(), BorderLayout.PAGE_START);
+		fourthPanel.add(prepareExtractionReplacementPanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(fourthPanel);
 		
     	return fourthPanel;
