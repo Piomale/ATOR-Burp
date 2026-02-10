@@ -153,8 +153,8 @@ public class ObtainPanel {
 	
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse obtainRequestResponse = new ErrorRequestResponse();
-		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		obtainViewPane.setPreferredSize(new Dimension(700, 200));
+		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		obtainViewPane.setPreferredSize(new Dimension(700, 320));
 		obtainViewPane.setResizeWeight(.5d);
 		obtainViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(obtainViewPane);
@@ -176,7 +176,7 @@ public class ObtainPanel {
         leftPanel.add(ireqMessageEditor.getComponent());
         
         // Left panel
-		obtainViewPane.setLeftComponent(leftPanel);
+		obtainViewPane.setTopComponent(leftPanel);
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
@@ -192,7 +192,7 @@ public class ObtainPanel {
 		rightPanel.add(iresMessageEditor.getComponent());
 		
 		// Right panel
-		obtainViewPane.setRightComponent(rightPanel);
+		obtainViewPane.setBottomComponent(rightPanel);
 		
 		callbacks.customizeUiComponent(obtainViewPane);
 		return  obtainViewPane;
