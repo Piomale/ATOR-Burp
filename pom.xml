@@ -4,6 +4,10 @@
   <artifactId>ATOR</artifactId>
   <version>3.0.3</version>
   <packaging>jar</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>11</maven.compiler.release>
+  </properties>
   <build>
       <defaultGoal>package</defaultGoal>
     <resources>
@@ -45,16 +49,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        
+        <version>3.11.0</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <release>${maven.compiler.release}</release>
         </configuration>
 
       </plugin>
        <plugin>
            <groupId>org.apache.maven.plugins</groupId>
            <artifactId>maven-jar-plugin</artifactId>
+           <version>3.3.0</version>
            <configuration>
                <archive>
                    <manifest>
@@ -99,21 +103,11 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.7</version>
-</dependency>
       <dependency>
           <groupId>net.portswigger.burp.extender</groupId>
           <artifactId>burp-extender-api</artifactId>
           <version>1.7.22</version>
       </dependency>
-    <dependency>
-      <groupId>com.codemagi</groupId>
-      <artifactId>burp-suite-utils</artifactId>
-      <version>LATEST</version>
-    </dependency>
     <dependency>
           <groupId>io.swagger.parser.v3</groupId>
           <artifactId>swagger-parser-v3</artifactId>

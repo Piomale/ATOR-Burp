@@ -164,7 +164,7 @@ public class ObtainPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse obtainRequestResponse = new ErrorRequestResponse();
 		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		obtainViewPane.setPreferredSize(new Dimension(1500, 760));
+		obtainViewPane.setPreferredSize(new Dimension(1500, 360));
 		obtainViewPane.setResizeWeight(.5d);
 		obtainViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(obtainViewPane);
