@@ -100,7 +100,7 @@ public class PreviewPanel {
 		
 		JPanel secondPanel = new JPanel();
 		secondPanel.setLayout(new BorderLayout());
-		secondPanel.add(prepareRequestResponsePanel(), BorderLayout.PAGE_START);
+		secondPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(secondPanel);
 		previewPanel.add(secondPanel);
     	
@@ -174,7 +174,7 @@ public class PreviewPanel {
 		
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
-		fourthPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.PAGE_START);
+		fourthPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(fourthPanel);
 		
 		previewPanel.add(fourthPanel);

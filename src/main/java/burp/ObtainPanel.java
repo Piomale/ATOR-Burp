@@ -328,7 +328,7 @@ public class ObtainPanel {
 		JPanel thirdPanel = new JPanel();
 		thirdPanel.setLayout(new BorderLayout());
 		
-		thirdPanel.add(prepareRequestResponsePanel(), BorderLayout.PAGE_START);
+		thirdPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(thirdPanel);
 		
     	return thirdPanel;
