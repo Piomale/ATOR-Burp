@@ -91,34 +91,52 @@ public class PreviewPanel {
 //		previewPanel.add(borderLayoutsep);
 		
 		
-		previewPanel.add(preparefirstPanel());
+		JPanel firstPreparedPanel = preparefirstPanel();
+		firstPreparedPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		previewPanel.add(firstPreparedPanel);
 		
 		JPanel borderLayoutsecondsep  = new JPanel();
 		borderLayoutsecondsep.setLayout(new BorderLayout());
 		borderLayoutsecondsep.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsecondsep.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(borderLayoutsecondsep);
 		
 		JPanel secondPanel = new JPanel();
 		secondPanel.setLayout(new BorderLayout());
-		secondPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
-		secondPanel.setPreferredSize(new Dimension(1500, 420));
+		JSplitPane originalResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		originalResizePane.setResizeWeight(1.0d);
+		JPanel originalReqResPanel = new JPanel(new BorderLayout());
+		originalReqResPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
+		originalReqResPanel.setMinimumSize(new Dimension(700, 260));
+		JPanel originalResizeHandlePanel = new JPanel(new BorderLayout());
+		originalResizeHandlePanel.setPreferredSize(new Dimension(1, 1));
+		originalResizeHandlePanel.setMinimumSize(new Dimension(1, 1));
+		originalResizePane.setTopComponent(originalReqResPanel);
+		originalResizePane.setBottomComponent(originalResizeHandlePanel);
+		originalResizePane.setDividerLocation(0.98d);
+		secondPanel.add(originalResizePane, BorderLayout.CENTER);
 		secondPanel.setMinimumSize(new Dimension(700, 260));
 		callbacks.customizeUiComponent(secondPanel);
+		callbacks.customizeUiComponent(originalResizePane);
+		secondPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(secondPanel);
     	
 		JPanel borderLayoutsep1  = new JPanel();
 		borderLayoutsep1.setLayout(new BorderLayout());
 		borderLayoutsep1.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsep1.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(borderLayoutsep1);
 		
 		JPanel firstArrow  = new JPanel();
 		firstArrow.setLayout(new BorderLayout());
 		firstArrow.add(generateImage(), BorderLayout.CENTER);
+		firstArrow.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(firstArrow);
 		
 		JPanel borderLayoutfirstarrowsep  = new JPanel();
 		borderLayoutfirstarrowsep.setLayout(new BorderLayout());
 		borderLayoutfirstarrowsep.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutfirstarrowsep.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(borderLayoutfirstarrowsep);
 		
 		JLabel secondheader = new JLabel("Executed ATOR Macro");
@@ -167,30 +185,46 @@ public class PreviewPanel {
 		thirdPanel.setLayout(new BorderLayout());
 		thirdPanel.add(tablePaneldown, BorderLayout.CENTER);
 		callbacks.customizeUiComponent(thirdPanel);
+		thirdPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(thirdPanel);
 		
 		JPanel borderLayoutsep2 = new JPanel();
 		borderLayoutsep2.setLayout(new BorderLayout());
 		borderLayoutsep2.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsep2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(borderLayoutsep2);
 		
 		JPanel secondArrow  = new JPanel();
 		secondArrow.setLayout(new BorderLayout());
 		secondArrow.add(generateImage(), BorderLayout.CENTER);
+		secondArrow.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(secondArrow);
 		
 		JPanel borderLayoutsep3 = new JPanel();
 		borderLayoutsep3.setLayout(new BorderLayout());
 		borderLayoutsep3.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsep3.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(borderLayoutsep3);
 		
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
-		fourthPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
-		fourthPanel.setPreferredSize(new Dimension(1500, 420));
+		JSplitPane modifiedResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		modifiedResizePane.setResizeWeight(1.0d);
+		JPanel modifiedReqResPanel = new JPanel(new BorderLayout());
+		modifiedReqResPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
+		modifiedReqResPanel.setMinimumSize(new Dimension(700, 260));
+		JPanel modifiedResizeHandlePanel = new JPanel(new BorderLayout());
+		modifiedResizeHandlePanel.setPreferredSize(new Dimension(1, 1));
+		modifiedResizeHandlePanel.setMinimumSize(new Dimension(1, 1));
+		modifiedResizePane.setTopComponent(modifiedReqResPanel);
+		modifiedResizePane.setBottomComponent(modifiedResizeHandlePanel);
+		modifiedResizePane.setDividerLocation(0.98d);
+		fourthPanel.add(modifiedResizePane, BorderLayout.CENTER);
 		fourthPanel.setMinimumSize(new Dimension(700, 260));
 		callbacks.customizeUiComponent(fourthPanel);
+		callbacks.customizeUiComponent(modifiedResizePane);
 		
+		fourthPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(fourthPanel);
 		
 		return previewPanel;
@@ -354,7 +388,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1500, 320));
+		previewViewPane.setPreferredSize(new Dimension(10, 320));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);
@@ -403,7 +437,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponseATORPanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1700, 320));
+		previewViewPane.setPreferredSize(new Dimension(10, 320));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);
@@ -452,7 +486,7 @@ public class PreviewPanel {
 	public Component prepareRequestResponseModifiedPanel() {
 		ErrorRequestResponse previewRequestResponse = new ErrorRequestResponse();
 		JSplitPane previewViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		previewViewPane.setPreferredSize(new Dimension(1500, 320));
+		previewViewPane.setPreferredSize(new Dimension(10, 320));
 		previewViewPane.setResizeWeight(.5d);
 		previewViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(previewViewPane);

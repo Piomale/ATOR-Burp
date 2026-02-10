@@ -93,11 +93,13 @@ public class ObtainPanel {
         JPanel borderLayout  = new JPanel();
 		borderLayout.setLayout(new BorderLayout());
 		borderLayout.add(confPanel, BorderLayout.PAGE_START);
+		borderLayout.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(borderLayout);
 		
 		JPanel borderLayoutsep  = new JPanel();
 		borderLayoutsep.setLayout(new BorderLayout());
 		borderLayoutsep.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsep.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(borderLayoutsep);
 		
 		JLabel secondheader = new JLabel("ATOR Macro");
@@ -123,23 +125,19 @@ public class ObtainPanel {
 		borderLayouttable.setLayout(new BorderLayout());
 		borderLayouttable.add(tablePaneldown, BorderLayout.PAGE_START);
 		
+		borderLayouttable.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(borderLayouttable);
-
-		JSplitPane obtainRequestAndExtractionSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		obtainRequestAndExtractionSplitPane.setResizeWeight(.6d);
-		obtainRequestAndExtractionSplitPane.setDividerLocation(380);
-		JPanel requestResponsePanel = preparethirdPanel();
-		requestResponsePanel.setMinimumSize(new Dimension(700, 260));
-		JPanel extractionReplacementPanel = preparefourthPanel();
-		extractionReplacementPanel.setMinimumSize(new Dimension(700, 220));
-		obtainRequestAndExtractionSplitPane.setTopComponent(requestResponsePanel);
-		obtainRequestAndExtractionSplitPane.setBottomComponent(extractionReplacementPanel);
-		callbacks.customizeUiComponent(obtainRequestAndExtractionSplitPane);
-		obtainPanel.add(obtainRequestAndExtractionSplitPane);
+		JPanel thirdPanel = preparethirdPanel();
+		thirdPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		obtainPanel.add(thirdPanel);
+		JPanel fourthPanel = preparefourthPanel();
+		fourthPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		obtainPanel.add(fourthPanel);
 		
 		JPanel borderLayoutsepfourth  = new JPanel();
 		borderLayoutsepfourth.setLayout(new BorderLayout());
 		borderLayoutsepfourth.add(getSeperatorPanel(), BorderLayout.PAGE_START);
+		borderLayoutsepfourth.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(borderLayoutsepfourth);
 		
 		return obtainPanel;
@@ -164,7 +162,7 @@ public class ObtainPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse obtainRequestResponse = new ErrorRequestResponse();
 		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		obtainViewPane.setPreferredSize(new Dimension(1500, 360));
+		obtainViewPane.setPreferredSize(new Dimension(10, 360));
 		obtainViewPane.setResizeWeight(.5d);
 		obtainViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(obtainViewPane);
