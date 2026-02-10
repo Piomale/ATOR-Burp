@@ -137,17 +137,27 @@ public class PreviewPanel {
 		tablePaneldown.add(secondheaderLayout);
 		
 		JPanel secondTableReqResPanel = new JPanel();
-		secondTableReqResPanel.setLayout(new BoxLayout(secondTableReqResPanel, BoxLayout.Y_AXIS));
+		secondTableReqResPanel.setLayout(new BorderLayout());
 		secondTableReqResPanel.setBorder(new EmptyBorder(5, 15, 5, 15));
 		callbacks.customizeUiComponent(secondTableReqResPanel);
 		
 		JPanel thirdPanelreqres = new JPanel();
 		thirdPanelreqres.setLayout(new BorderLayout());
 		thirdPanelreqres.add(prepareRequestResponseATORPanel(), BorderLayout.CENTER);
+		thirdPanelreqres.setMinimumSize(new Dimension(700, 240));
 		callbacks.customizeUiComponent(thirdPanelreqres);
+
+		JScrollPane atorMacroTablePanel = generateTablePanel();
+		atorMacroTablePanel.setMinimumSize(new Dimension(700, 120));
+
+		JSplitPane executedMacroSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		executedMacroSplitPane.setResizeWeight(.25d);
+		executedMacroSplitPane.setDividerLocation(140);
+		executedMacroSplitPane.setTopComponent(atorMacroTablePanel);
+		executedMacroSplitPane.setBottomComponent(thirdPanelreqres);
+		callbacks.customizeUiComponent(executedMacroSplitPane);
 		
-		secondTableReqResPanel.add(generateTablePanel());
-		secondTableReqResPanel.add(thirdPanelreqres);
+		secondTableReqResPanel.add(executedMacroSplitPane, BorderLayout.CENTER);
 		
 		tablePaneldown.add(secondTableReqResPanel);
 		
