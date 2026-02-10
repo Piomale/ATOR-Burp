@@ -199,6 +199,7 @@ public class PreviewPanel {
 		fourthPanel.add(prepareRequestResponseModifiedPanel(), BorderLayout.CENTER);
 		fourthPanel.setMinimumSize(new Dimension(700, 120));
 		callbacks.customizeUiComponent(fourthPanel);
+		callbacks.customizeUiComponent(modifiedResizePane);
 		
 		fourthPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		previewPanel.add(fourthPanel);
