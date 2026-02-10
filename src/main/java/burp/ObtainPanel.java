@@ -127,12 +127,20 @@ public class ObtainPanel {
 		
 		borderLayouttable.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(borderLayouttable);
+
+		JSplitPane requestAndExtractionSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		requestAndExtractionSplitPane.setResizeWeight(.45d);
+		requestAndExtractionSplitPane.setContinuousLayout(true);
 		JPanel thirdPanel = preparethirdPanel();
-		thirdPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		obtainPanel.add(thirdPanel);
+		thirdPanel.setMinimumSize(new Dimension(700, 220));
 		JPanel fourthPanel = preparefourthPanel();
-		fourthPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		obtainPanel.add(fourthPanel);
+		fourthPanel.setMinimumSize(new Dimension(700, 220));
+		requestAndExtractionSplitPane.setTopComponent(thirdPanel);
+		requestAndExtractionSplitPane.setBottomComponent(fourthPanel);
+		requestAndExtractionSplitPane.setDividerLocation(360);
+		callbacks.customizeUiComponent(requestAndExtractionSplitPane);
+		requestAndExtractionSplitPane.setAlignmentX(Component.LEFT_ALIGNMENT);
+		obtainPanel.add(requestAndExtractionSplitPane);
 		
 		JPanel borderLayoutsepfourth  = new JPanel();
 		borderLayoutsepfourth.setLayout(new BorderLayout());
@@ -334,26 +342,13 @@ public class ObtainPanel {
 	public JPanel preparethirdPanel() {
 		JPanel thirdPanel = new JPanel();
 		thirdPanel.setLayout(new BorderLayout());
-
-		JSplitPane requestResponseResizePane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		requestResponseResizePane.setResizeWeight(1.0d);
-		JPanel requestResponsePanel = new JPanel(new BorderLayout());
-		requestResponsePanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
-		requestResponsePanel.setMinimumSize(new Dimension(700, 260));
-		JPanel resizeHandlePanel = new JPanel(new BorderLayout());
-		resizeHandlePanel.setPreferredSize(new Dimension(1, 1));
-		resizeHandlePanel.setMinimumSize(new Dimension(1, 1));
-		requestResponseResizePane.setTopComponent(requestResponsePanel);
-		requestResponseResizePane.setBottomComponent(resizeHandlePanel);
-		requestResponseResizePane.setDividerLocation(0.98d);
-		callbacks.customizeUiComponent(requestResponseResizePane);
-
-		thirdPanel.add(requestResponseResizePane, BorderLayout.CENTER);
+		
+		thirdPanel.add(prepareRequestResponsePanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(thirdPanel);
 		
-    	return thirdPanel;
+    		return thirdPanel;
 	}
-	
+
 	public JPanel preparefourthPanel() {
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
