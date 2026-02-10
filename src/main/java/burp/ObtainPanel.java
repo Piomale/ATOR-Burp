@@ -353,7 +353,7 @@ public class ObtainPanel {
 		JPanel fourthPanel = new JPanel();
 		fourthPanel.setLayout(new BorderLayout());
 		
-		fourthPanel.add(prepareExtractionReplacementPanel(), BorderLayout.PAGE_START);
+		fourthPanel.add(prepareExtractionReplacementPanel(), BorderLayout.CENTER);
 		callbacks.customizeUiComponent(fourthPanel);
 		
     	return fourthPanel;
