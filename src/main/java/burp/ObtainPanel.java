@@ -132,12 +132,12 @@ public class ObtainPanel {
 		requestAndExtractionSplitPane.setResizeWeight(.45d);
 		requestAndExtractionSplitPane.setContinuousLayout(true);
 		JPanel thirdPanel = preparethirdPanel();
-		thirdPanel.setMinimumSize(new Dimension(700, 220));
+		thirdPanel.setMinimumSize(new Dimension(700, 120));
 		JPanel fourthPanel = preparefourthPanel();
-		fourthPanel.setMinimumSize(new Dimension(700, 220));
+		fourthPanel.setMinimumSize(new Dimension(700, 120));
 		requestAndExtractionSplitPane.setTopComponent(thirdPanel);
 		requestAndExtractionSplitPane.setBottomComponent(fourthPanel);
-		requestAndExtractionSplitPane.setDividerLocation(360);
+		requestAndExtractionSplitPane.setDividerLocation(520);
 		callbacks.customizeUiComponent(requestAndExtractionSplitPane);
 		requestAndExtractionSplitPane.setAlignmentX(Component.LEFT_ALIGNMENT);
 		obtainPanel.add(requestAndExtractionSplitPane);
@@ -170,7 +170,7 @@ public class ObtainPanel {
 	public Component prepareRequestResponsePanel() {
 		ErrorRequestResponse obtainRequestResponse = new ErrorRequestResponse();
 		JSplitPane obtainViewPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		obtainViewPane.setPreferredSize(new Dimension(10, 360));
+		obtainViewPane.setPreferredSize(new Dimension(10, 700));
 		obtainViewPane.setResizeWeight(.5d);
 		obtainViewPane.setDividerLocation(.5d);
 		callbacks.customizeUiComponent(obtainViewPane);
