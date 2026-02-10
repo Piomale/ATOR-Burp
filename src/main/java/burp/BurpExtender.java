@@ -9,8 +9,9 @@ import java.util.List;
 public class BurpExtender implements IBurpExtender, IContextMenuFactory, ITab,  IHttpListener {
 	
 	
-    private static String EXTENSION_NAME = "ATOR v2.3.0";
-    private static String EXTENSION_NAME_TAB_NAME = "ATOR v2.3.0";
+    private static final String EXTENSION_VERSION = "3.0.3";
+    private static final String EXTENSION_NAME = "ATOR v" + EXTENSION_VERSION;
+    private static final String EXTENSION_NAME_TAB_NAME = EXTENSION_NAME;
     public static SpotErrorMetaData spoterroMetaData = null;;
     public static IBurpExtenderCallbacks callbacks;
 	public static String bodyContentType;
